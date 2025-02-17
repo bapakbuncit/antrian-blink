@@ -48,7 +48,7 @@ function printQueue() {
             <title>Cetak Antrian</title>
             <style>
                 @page {
-                    size: 80mm auto;
+                    size: 58mm auto;
                     margin: 0;
                 }
                 body {
@@ -56,20 +56,13 @@ function printQueue() {
                     text-align: center;
                     margin: 0;
                     padding: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
                 }
                 .print-container {
                     width: 80mm;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    justify-content: center;
                     padding: 10px;
-                    border: 1px solid black;
-                    box-sizing: border-box;
                 }
                 .header {
                     font-size: 20px;
@@ -77,23 +70,17 @@ function printQueue() {
                     margin-bottom: 10px;
                     border-bottom: 2px solid black;
                     padding-bottom: 5px;
-                    width: 100%;
-                    text-align: center;
                 }
                 .queue-number {
                     font-size: 50px;
                     font-weight: bold;
                     margin: 20px 0;
-                    width: 100%;
-                    text-align: center;
                 }
                 .footer {
                     font-size: 14px;
                     margin-top: 10px;
                     border-top: 1px dashed black;
                     padding-top: 5px;
-                    width: 100%;
-                    text-align: center;
                 }
                 @media print {
                     body {
@@ -122,7 +109,7 @@ function printQueue() {
         </html>
     `;
 
-    const printWindow = window.open('', '', 'width=300,height=600');
+    const printWindow = window.open('', '', 'width=300,height=600'); // Ubah tinggi sesuai kebutuhan
     printWindow.document.open();
     printWindow.document.write(contentToPrint);
     printWindow.document.close();
