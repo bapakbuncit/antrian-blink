@@ -94,9 +94,10 @@ function printQueue() {
         </html>
     `;
 
-    const printWindow = window.open('', '', 'width=400,height=600');
+    const printWindow = window.open('', '', 'width=600,height=600');
     printWindow.document.write(contentToPrint);
     printWindow.document.close();
+    
 
     printWindow.onload = function () {
         printWindow.print();
@@ -104,5 +105,8 @@ function printQueue() {
             printWindow.close();
         };
     };
+
+    const cutCommand = Buffer.from([0x1D, 0x56, 0x41, 0x10]); // Perintah potong kertas
+    device.write(cutCommand);
 }
 
