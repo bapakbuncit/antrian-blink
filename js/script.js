@@ -58,28 +58,32 @@ function printQueue() {
                     padding: 0;
                 }
                 .print-container {
-                    padding: 10mm; /* Menambahkan padding untuk memberi ruang */
+                    padding: 8mm; /* Memberi sedikit ruang di dalam */
                     box-sizing: border-box;
-                    font-size: 20px;
-                    line-height: 1.5;
-                    color: black; /* Semua teks hitam */
+                    font-size: 18px;
+                    line-height: 1.4;
+                    color: black;
                     text-align: center;
+                    border: 2px solid black; /* Border tipis untuk tampilan lebih manis */
+                    border-radius: 5px; /* Membuat sudut sedikit melengkung */
                 }
                 .header {
-                    font-size: 28px; /* Ukuran lebih besar untuk header */
+                    font-size: 22px;
                     font-weight: bold;
-                    margin-bottom: 10px;
+                    margin-bottom: 8px;
+                    border-bottom: 1px solid black;
+                    padding-bottom: 5px;
                 }
                 .queue-number {
-                    font-size: 70px; /* Ukuran lebih besar untuk nomor antrian */
+                    font-size: 50px;
                     font-weight: bold;
-                    margin: 20px 0;
+                    margin: 15px 0;
                 }
                 .footer {
                     font-size: 14px;
-                    margin-top: 20px;
-                    border-top: 1px solid #000; /* Garis hitam untuk footer */
-                    padding-top: 10px;
+                    margin-top: 10px;
+                    border-top: 1px dashed black;
+                    padding-top: 8px;
                 }
                 .footer span {
                     font-style: italic;
@@ -114,7 +118,7 @@ function printQueue() {
         </html>
     `;
 
-    const printWindow = window.open('', '', 'width=400,height=600'); // Menambah ukuran jendela agar lebih besar
+    const printWindow = window.open('', '', 'width=400,height=600');
     printWindow.document.open();
     printWindow.document.write(contentToPrint);
     printWindow.document.close();
