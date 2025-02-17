@@ -47,10 +47,22 @@ function printQueue() {
         <head>
             <title>Cetak Antrian</title>
             <style>
+                @page {
+                    size: 80mm auto;
+                    margin: 0;
+                }
                 body {
                     font-family: Arial, sans-serif;
                     text-align: center;
-                    margin: 20px;
+                    margin: 0;
+                }
+                .print-container {
+                    display: inline-block;
+                    padding: 10px;
+                    width: 100mm;
+                    max-height: 150mm;
+                    overflow: hidden;
+                    border: 1px solid black;
                 }
                 .header {
                     font-size: 20px;
@@ -70,31 +82,26 @@ function printQueue() {
                     border-top: 1px dashed black;
                     padding-top: 5px;
                 }
-
                 @media print {
                     body {
                         margin: 0;
                         padding: 0;
+                    }
+                    .print-container {
                         width: 100%;
-                        height: 100%;
-                    }
-                    .header, .footer, .queue-number {
-                        page-break-before: avoid;
-                        page-break-after: avoid;
-                    }
-                    .queue-number {
-                        font-size: 50px;
-                        font-weight: bold;
+                        max-height: auto;
                     }
                 }
             </style>
         </head>
         <body>
-            <div class="header">NOMOR ANTRIAN</div>
-            <div class="queue-number">${queueNumber}</div>
-            <div class="footer">
-                Dicetak pada: ${formattedDate} - ${formattedTime} <br>
-                Terima kasih telah menunggu
+            <div class="print-container">
+                <div class="header">NOMOR ANTRIAN</div>
+                <div class="queue-number">${queueNumber}</div>
+                <div class="footer">
+                    Dicetak pada: ${formattedDate} - ${formattedTime} <br>
+                    Terima kasih telah menunggu
+                </div>
             </div>
             <script>
                 window.onload = function() {
