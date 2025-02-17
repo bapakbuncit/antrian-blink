@@ -48,7 +48,7 @@ function printQueue() {
             <title>Cetak Antrian</title>
             <style>
                 @page {
-                    size: 58mm auto;
+                    size: 80mm auto;
                     margin: 0;
                 }
                 body {
@@ -56,10 +56,6 @@ function printQueue() {
                     text-align: center;
                     margin: 0;
                     padding: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
                 }
                 .print-container {
                     width: 80mm;
@@ -67,31 +63,31 @@ function printQueue() {
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    padding: 10px;
+                    padding: 5px 10px; /* Kurangi padding agar tidak terlalu panjang */
                     border: 1px solid black;
                     box-sizing: border-box;
                 }
                 .header {
-                    font-size: 20px;
+                    font-size: 18px; /* Sedikit kecil agar hemat ruang */
                     font-weight: bold;
-                    margin-bottom: 10px;
+                    margin-bottom: 5px; /* Kurangi margin agar tidak terlalu panjang */
                     border-bottom: 2px solid black;
-                    padding-bottom: 5px;
+                    padding-bottom: 3px;
                     width: 100%;
                     text-align: center;
                 }
                 .queue-number {
-                    font-size: 50px;
+                    font-size: 45px; /* Ukuran masih besar tapi lebih pas */
                     font-weight: bold;
-                    margin: 20px 0;
+                    margin: 10px 0; /* Kurangi margin agar tidak terlalu panjang */
                     width: 100%;
                     text-align: center;
                 }
                 .footer {
-                    font-size: 14px;
-                    margin-top: 10px;
+                    font-size: 12px;
+                    margin-top: 5px; /* Kurangi margin agar tidak terlalu panjang */
                     border-top: 1px dashed black;
-                    padding-top: 5px;
+                    padding-top: 3px;
                     width: 100%;
                     text-align: center;
                 }
