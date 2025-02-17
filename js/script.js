@@ -37,6 +37,7 @@ printButton.addEventListener('click', () => {
 
 // Fungsi print ke printer POS
 function printQueue() {
+    // Menggunakan metode print browser untuk print
     const contentToPrint = `\n\nNomor Antrian: ${String(queueNumber).padStart(3, '0')}`;
 
     const printWindow = window.open('', '', 'width=600,height=400');
@@ -44,13 +45,6 @@ function printQueue() {
     printWindow.document.write(`<pre>${contentToPrint}</pre>`);
     printWindow.document.write('</body></html>');
     printWindow.document.close();
-
-    // Menunggu print selesai sebelum menutup jendela
-    printWindow.onload = function () {
-        printWindow.print();
-        printWindow.onafterprint = function() {
-            printWindow.close(); // Menutup jendela setelah print selesai
-        };
-    };
+    printWindow.print();
 }
 
