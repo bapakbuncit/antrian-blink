@@ -58,11 +58,13 @@ function printQueue() {
                 }
                 .print-container {
                     width: 100%; /* Pastikan lebar kertas penuh */
-                    padding: 5px;
+                    padding: 10px;
                     border: 1px solid black; /* Pastikan border kanan tercetak */
                     box-sizing: border-box;
                     border-collapse: collapse;
                     transform: scale(1.2); /* Perbesar tampilan agar tidak kecil */
+                    position: relative; /* Sesuaikan posisi elemen */
+                    margin-top: 10mm; /* Memberikan ruang di atas agar tidak terpotong */
                 }
                 .header {
                     font-size: 24px; /* Perbesar agar tidak kecil */
@@ -117,8 +119,8 @@ function printQueue() {
     // Tambahkan elemen ke halaman utama
     document.body.insertAdjacentHTML("beforeend", printContent);
 
-    // Langsung cetak tanpa popup
+    // Menampilkan dialog print properties (popup print) dengan window.print
     setTimeout(() => {
-        window.print();
+        window.print(); // Memunculkan print dialog
     }, 500);
 }
