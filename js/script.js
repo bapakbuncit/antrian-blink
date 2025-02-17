@@ -42,86 +42,80 @@ function printQueue() {
     const formattedDate = currentDate.toLocaleDateString();
     const formattedTime = currentDate.toLocaleTimeString();
 
-    // Buat elemen print baru di halaman utama
-    const printContent = `
-        <div id="printArea">
+    const contentToPrint = `
+        <html>
+        <head>
+            <title>Cetak Antrian</title>
             <style>
                 @page {
-                    size: 80mm auto;
-                    margin: 0; /* Hilangkan margin default */
+                    size: 58mm auto;
+                    margin: 0; /* Hilangkan margin bawaan printer */
                 }
                 body {
-                    font-family: Arial, sans-serif;
+                    font-family: 'Arial', sans-serif;
                     text-align: center;
                     margin: 0;
                     padding: 0;
                 }
                 .print-container {
-                    width: 100%; /* Pastikan lebar kertas penuh */
-                    padding: 10px;
-                    border: 1px solid black; /* Pastikan border kanan tercetak */
+                    padding: 10mm; /* Menambahkan padding untuk memberi ruang */
                     box-sizing: border-box;
-                    border-collapse: collapse;
-                    transform: scale(1.2); /* Perbesar tampilan agar tidak kecil */
-                    position: relative; /* Sesuaikan posisi elemen */
-                    margin-top: 10mm; /* Memberikan ruang di atas agar tidak terpotong */
+                    font-size: 20px;
+                    line-height: 1.5;
+                    color: black; /* Semua teks hitam */
+                    text-align: center;
                 }
                 .header {
-                    font-size: 24px; /* Perbesar agar tidak kecil */
+                    font-size: 28px; /* Ukuran lebih besar untuk header */
                     font-weight: bold;
-                    margin-bottom: 5px;
-                    border-bottom: 2px solid black;
-                    padding-bottom: 3px;
+                    margin-bottom: 10px;
                 }
                 .queue-number {
-                    font-size: 60px; /* Perbesar angka antrian */
+                    font-size: 70px; /* Ukuran lebih besar untuk nomor antrian */
                     font-weight: bold;
-                    margin: 10px 0;
+                    margin: 20px 0;
                 }
                 .footer {
-                    font-size: 16px; /* Perbesar teks footer */
-                    margin-top: 5px;
-                    border-top: 1px dashed black;
-                    padding-top: 3px;
+                    font-size: 14px;
+                    margin-top: 20px;
+                    border-top: 1px solid #000; /* Garis hitam untuk footer */
+                    padding-top: 10px;
+                }
+                .footer span {
+                    font-style: italic;
                 }
                 @media print {
-                    body * {
-                        visibility: hidden; /* Sembunyikan elemen lain */
+                    body {
+                        margin: 0;
+                        padding: 0;
                     }
-                    #printArea, #printArea * {
-                        visibility: visible; /* Cetak hanya area antrian */
-                    }
-                    #printArea {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
+                    .print-container {
+                        page-break-before: avoid;
                     }
                 }
             </style>
+        </head>
+        <body>
             <div class="print-container">
                 <div class="header">NOMOR ANTRIAN</div>
                 <div class="queue-number">${queueNumber}</div>
                 <div class="footer">
                     Dicetak pada: ${formattedDate} - ${formattedTime} <br>
-                    Terima kasih telah menunggu
+                    <span>Terima kasih telah menunggu</span>
                 </div>
             </div>
-        </div>
+            <script>
+                window.onload = function() {
+                    window.print();
+                    setTimeout(() => window.close(), 1000); // Menutup jendela setelah sedikit jeda
+                };
+            </script>
+        </body>
+        </html>
     `;
 
-    // Hapus elemen print sebelumnya jika ada
-    let existingPrintArea = document.getElementById("printArea");
-    if (existingPrintArea) {
-        existingPrintArea.remove();
-    }
-
-    // Tambahkan elemen ke halaman utama
-    document.body.insertAdjacentHTML("beforeend", printContent);
-
-    // Menampilkan dialog preview print
-    setTimeout(() => {
-        window.print(); // Munculkan dialog print
-        document.body.removeChild(document.getElementById("printArea")); // Hapus elemen setelah proses print
-    }, 500);
+    const printWindow = window.open('', '', 'width=400,height=600'); // Menambah ukuran jendela agar lebih besar
+    printWindow.document.open();
+    printWindow.document.write(contentToPrint);
+    printWindow.document.close();
 }
