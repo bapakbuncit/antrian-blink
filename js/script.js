@@ -70,10 +70,15 @@ function printQueue() {
                 .title {
                     font-size: 28px;
                     font-weight: bold;
-                    margin-bottom: 5px;
+                    margin-bottom: 2px;
+                }
+                .sub-title {
+                    font-size: 14px;
+                    font-weight: bold;
+                    margin-bottom: 8px;
                 }
                 .header {
-                    font-size: 16px; /* Ukuran lebih kecil */
+                    font-size: 14px; /* Diperkecil lagi */
                     font-weight: bold;
                     margin-bottom: 5px;
                     border-bottom: 1px solid black;
@@ -106,7 +111,8 @@ function printQueue() {
         </head>
         <body>
             <div class="print-container">
-                <div class="title">BLINK</div> <!-- Tambahan judul utama -->
+                <div class="title">BLINK</div>
+                <div class="sub-title">BP Batam Layanan Keliling</div>
                 <div class="header">NOMOR ANTRIAN</div>
                 <div class="queue-number">${queueNumber}</div>
                 <div class="footer">
