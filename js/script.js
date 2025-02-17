@@ -83,7 +83,7 @@ function printQueue() {
         </html>
     `;
 
-    const printWindow = window.open('', '', 'width=6000,height=600');
+    const printWindow = window.open('', '', 'width=600,height=600');
     printWindow.document.write(contentToPrint);
     printWindow.document.close();
 
