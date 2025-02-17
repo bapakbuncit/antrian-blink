@@ -49,47 +49,38 @@ function printQueue() {
             <style>
                 @page {
                     size: 58mm auto;
-                    margin: 0;
+                    margin: 0; /* Hilangkan margin bawaan printer */
                 }
                 body {
                     font-family: Arial, sans-serif;
                     text-align: center;
                     margin: 0;
                     padding: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
                 }
                 .print-container {
-                    width: 80mm;
-                    display: inline-block; /* Supaya tidak ada area kosong */
-                    padding: 10px;
+                    width: 100%; /* Agar sesuai dengan lebar kertas */
+                    padding: 5px 5px; /* Kurangi padding agar border kanan tidak terpotong */
                     border: 1px solid black;
                     box-sizing: border-box;
+                    border-collapse: collapse; /* Pastikan border tercetak penuh */
                 }
                 .header {
                     font-size: 20px;
                     font-weight: bold;
-                    margin-bottom: 10px;
+                    margin-bottom: 5px;
                     border-bottom: 2px solid black;
-                    padding-bottom: 5px;
-                    width: 100%;
-                    text-align: center;
+                    padding-bottom: 3px;
                 }
                 .queue-number {
                     font-size: 50px;
                     font-weight: bold;
-                    margin: 20px 0;
-                    width: 100%;
-                    text-align: center;
+                    margin: 10px 0;
                 }
                 .footer {
                     font-size: 14px;
-                    margin-top: 10px;
+                    margin-top: 5px;
                     border-top: 1px dashed black;
-                    padding-top: 5px;
-                    width: 100%;
-                    text-align: center;
+                    padding-top: 3px;
                 }
                 @media print {
                     body {
