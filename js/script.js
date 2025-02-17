@@ -37,17 +37,6 @@ printButton.addEventListener('click', () => {
 
 // Fungsi print ke printer POS
 function printQueue() {
-    // Menggunakan metode print browser untuk print
-    const contentToPrint = `\n\nNomor Antrian: ${String(queueNumber).padStart(3, '0')}`;
-
-    const printWindow = window.open('', '', 'width=600,height=400');
-    printWindow.document.write('<html><head><title>Print</title></head><body>');
-    printWindow.document.write(`<pre>${contentToPrint}</pre>`);
-    printWindow.document.write('</body></html>');
-    printWindow.document.close();
-    printWindow.print();
-}
-function printQueue() {
     const queueNumber = String(document.getElementById('queueNumber').textContent).padStart(3, '0');
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString();
@@ -94,10 +83,9 @@ function printQueue() {
         </html>
     `;
 
-    const printWindow = window.open('', '', 'width=600,height=600');
+    const printWindow = window.open('', '', 'width=6000,height=600');
     printWindow.document.write(contentToPrint);
     printWindow.document.close();
-    
 
     printWindow.onload = function () {
         printWindow.print();
@@ -105,8 +93,5 @@ function printQueue() {
             printWindow.close();
         };
     };
-
-    const cutCommand = Buffer.from([0x1D, 0x56, 0x41, 0x10]); // Perintah potong kertas
-    device.write(cutCommand);
 }
 
