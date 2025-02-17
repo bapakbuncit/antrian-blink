@@ -77,7 +77,7 @@ function printQueue() {
                         margin: 0;
                         padding: 0;
                         width: 100%;
-                        height: 70%;
+                        height: 20%;
                     }
                     .header, .footer, .queue-number {
                         page-break-before: avoid;
