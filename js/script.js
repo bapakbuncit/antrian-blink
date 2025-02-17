@@ -42,14 +42,13 @@ function printQueue() {
     const formattedDate = currentDate.toLocaleDateString();
     const formattedTime = currentDate.toLocaleTimeString();
 
-    const contentToPrint = `
-        <html>
-        <head>
-            <title>Cetak Antrian</title>
+    // Buat elemen print baru di halaman utama
+    const printContent = `
+        <div id="printArea">
             <style>
                 @page {
-                    size: 58mm auto;
-                    margin: 0; /* Hilangkan margin bawaan printer */
+                    size: 80mm auto;
+                    margin: 0; /* Hilangkan margin default */
                 }
                 body {
                     font-family: Arial, sans-serif;
@@ -58,11 +57,11 @@ function printQueue() {
                     padding: 0;
                 }
                 .print-container {
-                    width: 100%; /* Agar sesuai dengan lebar kertas */
-                    padding: 5px 5px; /* Kurangi padding agar border kanan tidak terpotong */
-                    border: 1px solid black;
+                    width: 80mm;
+                    padding: 5px;
+                    border: 1px solid black; /* Pastikan border kanan tercetak */
                     box-sizing: border-box;
-                    border-collapse: collapse; /* Pastikan border tercetak penuh */
+                    border-collapse: collapse;
                 }
                 .header {
                     font-size: 20px;
@@ -83,14 +82,20 @@ function printQueue() {
                     padding-top: 3px;
                 }
                 @media print {
-                    body {
-                        margin: 0;
-                        padding: 0;
+                    body * {
+                        visibility: hidden; /* Sembunyikan elemen lain */
+                    }
+                    #printArea, #printArea * {
+                        visibility: visible; /* Cetak hanya area antrian */
+                    }
+                    #printArea {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 80mm;
                     }
                 }
             </style>
-        </head>
-        <body>
             <div class="print-container">
                 <div class="header">NOMOR ANTRIAN</div>
                 <div class="queue-number">${queueNumber}</div>
@@ -99,18 +104,18 @@ function printQueue() {
                     Terima kasih telah menunggu
                 </div>
             </div>
-            <script>
-                window.onload = function() {
-                    window.print();
-                    setTimeout(() => window.close(), 500);
-                };
-            </script>
-        </body>
-        </html>
+        </div>
     `;
 
-    const printWindow = window.open('', '', 'width=300,height=600');
-    printWindow.document.open();
-    printWindow.document.write(contentToPrint);
-    printWindow.document.close();
+    // Hapus elemen print sebelumnya jika ada
+    let existingPrintArea = document.getElementById("printArea");
+    if (existingPrintArea) {
+        existingPrintArea.remove();
+    }
+
+    // Tambahkan elemen ke halaman utama
+    document.body.insertAdjacentHTML("beforeend", printContent);
+
+    // Langsung cetak
+    window.print();
 }
