@@ -5,31 +5,57 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
+    background-image: url(../img/bg.jpg);
 }
 
 .container {
     text-align: center;
-    background-color: white;
+    background-color: rgba(8, 8, 12, 0.8); /* Biru transparan */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 400px;
+    height: 500px;
 }
 
-h1 {
-    font-size: 24px;
-    color: #333;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Beri jarak antara logo dan teks */
+    margin-top: 20px;
+}
+
+.logo {
+    height: 100px; /* Sesuaikan ukuran logo */
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.kiri {
+    margin-left: 40px; /* Jarak antara logo kiri dan tepi */
+}
+
+.kanan {
+    margin-right: 40px; /* Jarak antara logo kanan dan tepi */
+}
+
+.judul h1 {
+    font-size: 36px;
+    color: #ffffff;
+    margin: 0;
 }
 
 .queue-number {
-    font-size: 48px;
+    font-size: 60px;
     font-weight: bold;
-    margin: 20px 0;
+    margin: 40px 0;
+    color: #ffffff;
 }
 
 .controls button {
-    background-color: #4CAF50;
+    background-color: #222ba5;
     color: white;
     padding: 10px 20px;
     margin: 5px;
@@ -40,5 +66,14 @@ h1 {
 }
 
 .controls button:hover {
-    background-color: #45a049;
+    background-color: #3384e0;
+}
+
+/* footer */
+.credit {
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 1rem;
+    color: #ffffff;
+    font-style: italic;
 }
