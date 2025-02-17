@@ -48,21 +48,21 @@ function printQueue() {
             <title>Cetak Antrian</title>
             <style>
                 @page {
-                    size: 80mm auto;
+                    size: 58mm auto;
                     margin: 0;
                 }
                 body {
                     font-family: Arial, sans-serif;
                     text-align: center;
                     margin: 0;
+                    padding: 0;
                 }
                 .print-container {
-                    display: inline-block;
+                    width: 80mm;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     padding: 10px;
-                    width: 100mm;
-                    max-height: 150mm;
-                    overflow: hidden;
-                    border: 1px solid black;
                 }
                 .header {
                     font-size: 20px;
@@ -87,10 +87,6 @@ function printQueue() {
                         margin: 0;
                         padding: 0;
                     }
-                    .print-container {
-                        width: 100%;
-                        max-height: auto;
-                    }
                 }
             </style>
         </head>
@@ -113,7 +109,7 @@ function printQueue() {
         </html>
     `;
 
-    const printWindow = window.open('', '', 'width=600,height=600');
+    const printWindow = window.open('', '', 'width=300,height=600'); // Ubah tinggi sesuai kebutuhan
     printWindow.document.open();
     printWindow.document.write(contentToPrint);
     printWindow.document.close();
