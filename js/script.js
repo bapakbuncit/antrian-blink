@@ -47,7 +47,7 @@ function printQueue() {
         <div id="printArea">
             <style>
                 @page {
-                    size: 80mm auto;
+                    size: 58mm auto;
                     margin: 0; /* Hilangkan margin default */
                 }
                 body {
