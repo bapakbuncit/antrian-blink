@@ -70,6 +70,24 @@ function printQueue() {
                     border-top: 1px dashed black;
                     padding-top: 5px;
                 }
+
+                /* CSS untuk memastikan cetakan hanya satu halaman */
+                @media print {
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .header, .footer, .queue-number {
+                        page-break-before: avoid;
+                        page-break-after: avoid;
+                    }
+                    .queue-number {
+                        font-size: 50px;
+                        font-weight: bold;
+                    }
+                }
             </style>
         </head>
         <body>
@@ -94,4 +112,3 @@ function printQueue() {
         };
     };
 }
-
