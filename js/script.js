@@ -12,8 +12,12 @@ function updateQueueNumber() {
 
 // Fungsi untuk next nomor antrian
 nextButton.addEventListener('click', () => {
-    queueNumber++;
-    updateQueueNumber();
+    if (queueNumber < MAX_QUEUE) { // ✅ Tambahan: Cek apakah masih di bawah batas maksimal
+        queueNumber++;
+        updateQueueNumber();
+    } else {
+        alert("Antrian sudah habis!"); // ✅ Tambahan: Munculkan alert jika antrian melebihi batas
+    }
 });
 
 // Fungsi untuk back nomor antrian
