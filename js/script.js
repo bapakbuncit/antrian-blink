@@ -47,7 +47,7 @@ function printQueue() {
         <div id="printArea">
             <style>
                 @page {
-                    size: 58mm auto;
+                    size: 80mm auto;
                     margin: 0; /* Hilangkan margin default */
                 }
                 body {
@@ -57,26 +57,27 @@ function printQueue() {
                     padding: 0;
                 }
                 .print-container {
-                    width: 80mm;
+                    width: 100%; /* Pastikan lebar kertas penuh */
                     padding: 5px;
                     border: 1px solid black; /* Pastikan border kanan tercetak */
                     box-sizing: border-box;
                     border-collapse: collapse;
+                    transform: scale(1.2); /* Perbesar tampilan agar tidak kecil */
                 }
                 .header {
-                    font-size: 20px;
+                    font-size: 24px; /* Perbesar agar tidak kecil */
                     font-weight: bold;
                     margin-bottom: 5px;
                     border-bottom: 2px solid black;
                     padding-bottom: 3px;
                 }
                 .queue-number {
-                    font-size: 50px;
+                    font-size: 60px; /* Perbesar angka antrian */
                     font-weight: bold;
                     margin: 10px 0;
                 }
                 .footer {
-                    font-size: 14px;
+                    font-size: 16px; /* Perbesar teks footer */
                     margin-top: 5px;
                     border-top: 1px dashed black;
                     padding-top: 3px;
@@ -92,7 +93,7 @@ function printQueue() {
                         position: absolute;
                         top: 0;
                         left: 0;
-                        width: 80mm;
+                        width: 100%;
                     }
                 }
             </style>
@@ -116,6 +117,8 @@ function printQueue() {
     // Tambahkan elemen ke halaman utama
     document.body.insertAdjacentHTML("beforeend", printContent);
 
-    // Langsung cetak
-    window.print();
+    // Langsung cetak tanpa popup
+    setTimeout(() => {
+        window.print();
+    }, 500);
 }
