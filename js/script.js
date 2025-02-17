@@ -42,8 +42,7 @@ function printQueue() {
     const formattedDate = currentDate.toLocaleDateString();
     const formattedTime = currentDate.toLocaleTimeString();
 
-    // Buat elemen print baru di halaman utama
-    const printContent = `
+    const contentToPrint = `
         <div id="printArea">
             <style>
                 @page {
@@ -110,17 +109,8 @@ function printQueue() {
         </div>
     `;
 
-    // Hapus elemen print sebelumnya jika ada
-    let existingPrintArea = document.getElementById("printArea");
-    if (existingPrintArea) {
-        existingPrintArea.remove();
-    }
-
-    // Tambahkan elemen ke halaman utama
-    document.body.insertAdjacentHTML("beforeend", printContent);
-
-    // Menampilkan dialog print properties (popup print) dengan window.print
-    setTimeout(() => {
-        window.print(); // Memunculkan print dialog
-    }, 500);
+    const printWindow = window.open('', '', 'width=300,height=600');
+    printWindow.document.open();
+    printWindow.document.write(contentToPrint);
+    printWindow.document.close();
 }
