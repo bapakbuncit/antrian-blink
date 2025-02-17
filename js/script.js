@@ -58,7 +58,7 @@ function printQueue() {
                     padding: 0;
                 }
                 .print-container {
-                    padding: 8mm;
+                    padding: 3mm;
                     box-sizing: border-box;
                     font-size: 18px;
                     line-height: 1.4;
@@ -92,7 +92,7 @@ function printQueue() {
                 .footer {
                     font-size: 14px;
                     margin-top: 10px;
-                    border-top: 1px dashed black;
+                    border-top: 1px solid black;
                     padding-top: 8px;
                 }
                 .footer span {
