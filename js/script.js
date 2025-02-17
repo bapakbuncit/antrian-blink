@@ -37,7 +37,7 @@ printButton.addEventListener('click', () => {
 
 // Fungsi print ke printer POS
 function printQueue() {
-    const contentToPrint = `\n\Nomor Antrian: ${String(queueNumber).padStart(3, '0')}`;
+    const contentToPrint = `\n\nNomor Antrian: ${String(queueNumber).padStart(3, '0')}`;
 
     const printWindow = window.open('', '', 'width=600,height=400');
     printWindow.document.write('<html><head><title>Print</title></head><body>');
