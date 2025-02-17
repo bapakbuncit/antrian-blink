@@ -47,4 +47,62 @@ function printQueue() {
     printWindow.document.close();
     printWindow.print();
 }
+function printQueue() {
+    const queueNumber = String(document.getElementById('queueNumber').textContent).padStart(3, '0');
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString();
+    const formattedTime = currentDate.toLocaleTimeString();
+
+    const contentToPrint = `
+        <html>
+        <head>
+            <title>Cetak Antrian</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    margin: 20px;
+                }
+                .header {
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    border-bottom: 2px solid black;
+                    padding-bottom: 5px;
+                }
+                .queue-number {
+                    font-size: 50px;
+                    font-weight: bold;
+                    margin: 20px 0;
+                }
+                .footer {
+                    font-size: 14px;
+                    margin-top: 10px;
+                    border-top: 1px dashed black;
+                    padding-top: 5px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">NOMOR ANTRIAN</div>
+            <div class="queue-number">${queueNumber}</div>
+            <div class="footer">
+                Dicetak pada: ${formattedDate} - ${formattedTime} <br>
+                Terima kasih telah menunggu
+            </div>
+        </body>
+        </html>
+    `;
+
+    const printWindow = window.open('', '', 'width=400,height=600');
+    printWindow.document.write(contentToPrint);
+    printWindow.document.close();
+
+    printWindow.onload = function () {
+        printWindow.print();
+        printWindow.onafterprint = function() {
+            printWindow.close();
+        };
+    };
+}
 
