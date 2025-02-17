@@ -71,7 +71,6 @@ function printQueue() {
                     padding-top: 5px;
                 }
 
-                /* CSS untuk memastikan cetakan hanya satu halaman */
                 @media print {
                     body {
                         margin: 0;
@@ -97,11 +96,18 @@ function printQueue() {
                 Dicetak pada: ${formattedDate} - ${formattedTime} <br>
                 Terima kasih telah menunggu
             </div>
+            <script>
+                window.onload = function() {
+                    window.print();
+                    setTimeout(() => window.close(), 500);
+                };
+            </script>
         </body>
         </html>
     `;
 
     const printWindow = window.open('', '', 'width=600,height=600');
+    printWindow.document.open();
     printWindow.document.write(contentToPrint);
     printWindow.document.close();
 }
