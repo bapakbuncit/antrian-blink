@@ -77,7 +77,7 @@ function printQueue() {
                         margin: 0;
                         padding: 0;
                         width: 100%;
-                        height: 20%;
+                        height: 100%;
                     }
                     .header, .footer, .queue-number {
                         page-break-before: avoid;
@@ -104,11 +104,4 @@ function printQueue() {
     const printWindow = window.open('', '', 'width=600,height=600');
     printWindow.document.write(contentToPrint);
     printWindow.document.close();
-
-    printWindow.onload = function () {
-        printWindow.print();
-        printWindow.onafterprint = function() {
-            printWindow.close();
-        };
-    };
 }
