@@ -1,30 +1,49 @@
-let queue = 1;
+let queueNumber = 1; // Inisialisasi nomor antrian pertama
+const queueDisplay = document.getElementById('queueNumber');
+const nextButton = document.getElementById('nextButton');
+const backButton = document.getElementById('backButton');
+const resetButton = document.getElementById('resetButton');
+const printButton = document.getElementById('printButton');
 
-        function updateQueue() {
-            document.getElementById("queueNumber").innerText = queue;
-        }
+// Fungsi untuk update nomor antrian
+function updateQueueNumber() {
+    queueDisplay.textContent = String(queueNumber).padStart(3, '0');
+}
 
-        function nextQueue() {
-            queue++;
-            updateQueue();
-        }
+// Fungsi untuk next nomor antrian
+nextButton.addEventListener('click', () => {
+    queueNumber++;
+    updateQueueNumber();
+});
 
-        function previousQueue() {
-            if (queue > 1) {
-                queue--;
-                updateQueue();
-            }
-        }
+// Fungsi untuk back nomor antrian
+backButton.addEventListener('click', () => {
+    if (queueNumber > 1) {
+        queueNumber--;
+        updateQueueNumber();
+    }
+});
 
-        function resetQueue() {
-            queue = 1;
-            updateQueue();
-        }
+// Fungsi untuk reset nomor antrian
+resetButton.addEventListener('click', () => {
+    queueNumber = 1;
+    updateQueueNumber();
+});
 
-        function printQueue() {
-            let printWindow = window.open('', '', 'width=300,height=400');
-            printWindow.document.write('<h1>No. Antrian</h1>');
-            printWindow.document.write('<h2 style="font-size: 50px;">' + queue + '</h2>');
-            printWindow.document.close();
-            printWindow.print();
-        }
+// Fungsi untuk print nomor antrian (menggunakan printer POS)
+printButton.addEventListener('click', () => {
+    printQueue();
+});
+
+// Fungsi print ke printer POS
+function printQueue() {
+    // Menggunakan metode print browser untuk print
+    const contentToPrint = `Nomor Antrian: ${String(queueNumber).padStart(3, '0')}`;
+
+    const printWindow = window.open('', '', 'width=600,height=400');
+    printWindow.document.write('<html><head><title>Print</title></head><body>');
+    printWindow.document.write(`<pre>${contentToPrint}</pre>`);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+}

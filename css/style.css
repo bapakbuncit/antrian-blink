@@ -1,40 +1,44 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-}
-.container {
-    margin-top: 50px;
-    /* display: block; */
-    display: inline-block;
-    border: 2px solid black;
-    /* width: 200px; */
-}
-.container .btn {
-    /* display: inline-block; */
-    border-radius: 0.5rem;
-}
-.queue-number {
-    font-size: 60px;
-    font-weight: bold;
-}
-button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
 }
 
-/* media querie */
-@media print {
-    body {
-        text-align: center;
-        font-size: 14px;
-    }
-    .queue-number {
-        font-size: 30px;
-        font-weight: bold;
-    }
-    button {
-        display: none;
-    }
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.queue-number {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.controls button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.controls button:hover {
+    background-color: #45a049;
 }
