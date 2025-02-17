@@ -5,6 +5,8 @@ const backButton = document.getElementById('backButton');
 const resetButton = document.getElementById('resetButton');
 const printButton = document.getElementById('printButton');
 
+const MAX_QUEUE = 30; // ✅ Tambahan: Batas maksimal nomor antrian
+
 // Fungsi untuk update nomor antrian
 function updateQueueNumber() {
     queueDisplay.textContent = String(queueNumber).padStart(3, '0');
