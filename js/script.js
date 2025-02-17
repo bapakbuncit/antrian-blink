@@ -42,7 +42,8 @@ function printQueue() {
     const formattedDate = currentDate.toLocaleDateString();
     const formattedTime = currentDate.toLocaleTimeString();
 
-    const contentToPrint = `
+    // Buat elemen print baru di halaman utama
+    const printContent = `
         <div id="printArea">
             <style>
                 @page {
@@ -109,8 +110,18 @@ function printQueue() {
         </div>
     `;
 
-    const printWindow = window.open('', '', 'width=300,height=600');
-    printWindow.document.open();
-    printWindow.document.write(contentToPrint);
-    printWindow.document.close();
+    // Hapus elemen print sebelumnya jika ada
+    let existingPrintArea = document.getElementById("printArea");
+    if (existingPrintArea) {
+        existingPrintArea.remove();
+    }
+
+    // Tambahkan elemen ke halaman utama
+    document.body.insertAdjacentHTML("beforeend", printContent);
+
+    // Menampilkan dialog preview print
+    setTimeout(() => {
+        window.print(); // Munculkan dialog print
+        document.body.removeChild(document.getElementById("printArea")); // Hapus elemen setelah proses print
+    }, 500);
 }
